@@ -4,20 +4,25 @@ import { Link, useHistory } from 'react-router-dom';
 import api from "../../services/api";
 
 export default function Home() {
-
+    const history = useHistory()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [newToken, setNewToken] = useState('')
+    const [error, setError] = useState(null)
+
 
     const handleLogin = async () => {
-
         try {
-            const { data: { token } } = await api.post("/login", {
-                "email": "usertester@example.com",
-                "password": "12345678"
+            const { data } = await api.post("/login", {
+                email, password
             });
-            setNewToken(token);
+            if (data?.hasOwnProperty('error')) {
+                return setError(data.error)
+            }
+            setNewToken(data.token);
             localStorage.clear()
-            localStorage.setItem('token', token)
-            // history.push('/main')
+            localStorage.setItem('token', data?.token)
+            history.push('/main')
         } catch (error) {
             console.log(error)
         }
@@ -26,8 +31,12 @@ export default function Home() {
     return (
         <div className="container">
             <h1>Login</h1>
-            <h2>Token: {newToken}</h2>
-            <button type="button" onClick={() => handleLogin()}>Login</button>
+            <form>
+                <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" className="" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
+                <button type="button" onClick={() => handleLogin()}>Login</button>
+            </form>
+            {error && <span>{error?.message}</span>}
         </div>
     );
 }
