@@ -1,0 +1,8 @@
+.order-item{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background: rgb(164, 164, 164);
+    padding: 10px;
+    margin: 30px
+}
