@@ -5,7 +5,7 @@ import api from "../../services/api";
 
 import './style.css'
 
-export default function Login() {
+export default function Signup() {
     const history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -14,14 +14,12 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            const { data } = await api.post("/login", {
+            const { data } = await api.post("/signup", {
                 email, password
             });
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
-            localStorage.clear()
-            localStorage.setItem('token', data?.token)
             history.push('/main')
         } catch (error) {
             console.log(error)
@@ -31,13 +29,13 @@ export default function Login() {
     return (<>
         <Navbar />
         <div className="container">
-            <h1>Login</h1>
-            <form className="login-form">
+            <h1>Signup</h1>
+            <form className="signup-form">
                 <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" className="" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
                 <button type="button" onClick={() => handleLogin()}>Login</button>
-                {error && <span>{error?.message}</span>}
             </form>
+            {error && <span>{error?.message}</span>}
         </div>
     </>);
 }
