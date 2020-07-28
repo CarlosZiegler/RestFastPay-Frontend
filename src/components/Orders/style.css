@@ -15,6 +15,7 @@
 }
 
 .orders-table th {
+    padding-right: 5px;
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -25,6 +26,7 @@
     text-transform: uppercase;
     font-style: normal;
     font-weight: bold;
+    width: 100%;
 }
 
 
@@ -34,12 +36,11 @@ table {
 }
 th {
     border-style: none;
-    padding: 5px;
 }
 td {
     border-style: none;
-    padding: 5px;
     background-color:#fff;
+    padding: 10px 5px;
 }
 td:first-child {
     border-left-style: none;
@@ -51,6 +52,7 @@ td:last-child {
     border-bottom-right-radius: 10px; 
     border-top-right-radius: 10px; 
 }
+
 
 
 

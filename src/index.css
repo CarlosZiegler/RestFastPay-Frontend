@@ -24,7 +24,7 @@ code {
   background:#FF9900;
   border:none;
   border-radius:10px;
-  padding:10px;
+  padding:10px 5px;
   font-weight: bold;
   text-transform:uppercase;
 }
