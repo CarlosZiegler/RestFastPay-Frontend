@@ -7,9 +7,9 @@ import './style.css'
 
 export default function CreateTable() {
     const history = useHistory()
-    const [number, setNumber] = useState(null)
+    const [number, setNumber] = useState('')
     const [token, setToken] = useState(localStorage.getItem('token'))
-    const [error, setError] = useState(null)
+    const [error, setError] = useState('')
 
 
     const handleCreateTable = async () => {

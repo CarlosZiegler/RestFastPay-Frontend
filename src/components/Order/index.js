@@ -12,7 +12,7 @@ export default function index({ order }) {
 
     return (
         <tr className="table-row">
-            <td className='table-info order-number'>#{lastFiveDigitsOfId}</td>
+            <td className='table-info order-number'>{lastFiveDigitsOfId}</td>
             <td className='table-info table-number'>{tableId?.number}</td>
             <td className="table-info order-status"><span className={status === 'closed' ? `status-paid` : 'status-pending'}>{showStatus}</span></td>
             <td className='table-info order-total'>€{total.toFixed(2)}</td>

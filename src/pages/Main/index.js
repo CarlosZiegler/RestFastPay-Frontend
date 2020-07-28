@@ -3,8 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
 import Orders from '../../components/Orders'
+import SearchBar from '../../components/SearchBar'
 import api from "../../services/api";
-
+import findOrders from "../../utils/findOrders";
 
 import listDataAnimation from '../../assets/lotties/19465-scrolling-through-mobile.json'
 import createOrderDataAnimation from '../../assets/lotties/14157-patient-successfully-added.json'
@@ -46,14 +47,20 @@ const defaultOptionsAnimationTable = {
 export default function Main() {
     const history = useHistory()
     const [token, setToken] = useState(localStorage.getItem('token'))
-    const [orders, setOrders] = useState(localStorage.getItem([]))
-    const [error, setError] = useState(localStorage.getItem(null))
+    const [orders, setOrders] = useState([])
+    const [showOrders, setShowOrders] = useState([])
+    const [findField, setFindField] = useState('')
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         if (!token) {
             history.push('/login')
         }
     }, [token])
+
+    useEffect(() => {
+        setShowOrders(orders)
+    }, [orders])
 
     const getAllOrders = async () => {
         try {
@@ -65,7 +72,6 @@ export default function Main() {
                 return setError(data.error)
             }
             setOrders(data)
-            console.log(data)
         } catch (error) {
             console.log(error)
         }
@@ -74,6 +80,15 @@ export default function Main() {
     useEffect(() => {
         getAllOrders()
     }, [])
+
+    const findOrders = (orders) => {
+        const result = orders.filter(order => order._id.includes(findField) || order.tableId?.number.includes(findField))
+        return setShowOrders(result)
+    }
+
+    useEffect(() => {
+        findOrders(orders, findOrders, setShowOrders)
+    }, [findField])
 
     return (
         <>
@@ -108,7 +123,8 @@ export default function Main() {
                 <a className="btn-item" href="/table/create">Create Table</a>
             </div>
             <div className="orders-container">
-                {orders && <Orders orders={orders} />}
+                <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                {orders && <Orders orders={showOrders} />}
 
             </div>
 
