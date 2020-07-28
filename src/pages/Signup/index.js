@@ -20,7 +20,7 @@ export default function Signup() {
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
-            history.push('/main')
+            history.push('/login')
         } catch (error) {
             console.log(error)
         }

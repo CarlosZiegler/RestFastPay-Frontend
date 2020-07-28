@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -48,10 +49,10 @@ export default function SimpleMenu() {
                 {token && (
                     <div>
                         <MenuItem onClick={handleClose}>
-                            <a href="/logout" className="menu-item">Logout</a>
+                            <a href="/main" className="menu-item">Main</a>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <a href="/main" className="menu-item">Main</a>
+                            <a href="/logout" className="menu-item">Logout</a>
                         </MenuItem>
                     </div>)
                 }
