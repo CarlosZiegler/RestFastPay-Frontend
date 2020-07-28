@@ -99,10 +99,10 @@ export default function Main() {
         const result = orders.filter((order) => order.status === orderStatus)
         return setShowOrders(result)
     }
-
     useEffect(() => {
         filterBy()
     }, [orderStatus])
+
 
     return (
         <>
