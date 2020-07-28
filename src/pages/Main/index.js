@@ -4,8 +4,9 @@ import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
 import Orders from '../../components/Orders'
 import SearchBar from '../../components/SearchBar'
+import FilterBy from '../../components/FilterBy'
 import api from "../../services/api";
-import findOrders from "../../utils/findOrders";
+
 
 import listDataAnimation from '../../assets/lotties/19465-scrolling-through-mobile.json'
 import createOrderDataAnimation from '../../assets/lotties/14157-patient-successfully-added.json'
@@ -50,6 +51,7 @@ export default function Main() {
     const [orders, setOrders] = useState([])
     const [showOrders, setShowOrders] = useState([])
     const [findField, setFindField] = useState('')
+    const [orderStatus, setOrderStatus] = useState('all')
     const [error, setError] = useState(null)
 
     useEffect(() => {
@@ -81,14 +83,26 @@ export default function Main() {
         getAllOrders()
     }, [])
 
-    const findOrders = (orders) => {
+    const findOrders = () => {
         const result = orders.filter(order => order._id.includes(findField) || order.tableId?.number.includes(findField))
         return setShowOrders(result)
     }
 
     useEffect(() => {
-        findOrders(orders, findOrders, setShowOrders)
+        findOrders()
     }, [findField])
+
+    const filterBy = (event) => {
+        if (orderStatus === 'all') {
+            return setShowOrders(orders)
+        }
+        const result = orders.filter((order) => order.status === orderStatus)
+        return setShowOrders(result)
+    }
+
+    useEffect(() => {
+        filterBy()
+    }, [orderStatus])
 
     return (
         <>
@@ -123,9 +137,11 @@ export default function Main() {
                 <a className="btn-item" href="/table/create">Create Table</a>
             </div>
             <div className="orders-container">
-                <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                <div className="search-container">
+                    <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                    <FilterBy options={['paid', 'pending']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
+                </div>
                 {orders && <Orders orders={showOrders} />}
-
             </div>
 
         </>

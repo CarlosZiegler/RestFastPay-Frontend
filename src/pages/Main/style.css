@@ -31,4 +31,11 @@
 .orders-container{
     background:rgba(255, 185, 185, 0.24);
     border-radius: 20px 20px 0 0 ;
+    margin-top: 20px;
+    min-height: 50vh;
+}
+.search-container{
+    display: flex;
+    justify-content:center;
+    align-items:center;
 }

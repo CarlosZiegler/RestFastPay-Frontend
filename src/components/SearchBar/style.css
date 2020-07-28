@@ -1,9 +1,20 @@
 .search-bar{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    margin: 5px auto;
+    padding:5px;
+    width:100%;
+   
 }
 .search-bar-input{
-    margin:10px 0;
+    margin:20px auto 0px auto;
+    width:90%;
+    height: 30px;
+    border:none;
+    border-radius: 10px;
+    color:rgba(63, 61, 86, 0.42);
+    font-size:0.8rem;
+}
+.search-bar-input::placeholder{
+    padding-left:5px;
+    font-size:0.9rem;
 }

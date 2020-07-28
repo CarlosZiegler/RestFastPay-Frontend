@@ -1,0 +1,12 @@
+
+.filterBy{
+    margin:20px auto 0px auto;
+    height: 30px;
+    width: 100px;
+    border:none;
+    border-radius: 10px;
+    margin-right: 15px;
+    background:#fff;
+    text-transform: uppercase;
+    color:rgba(63, 61, 86, 0.60);
+}
