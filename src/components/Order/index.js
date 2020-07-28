@@ -8,8 +8,6 @@ export default function index({ order }) {
     if (status === 'closed') {
         showStatus = 'PAID';
     }
-
-
     return (
         <tr className="table-row">
             <td className='table-info order-number'>{lastFiveDigitsOfId}</td>
