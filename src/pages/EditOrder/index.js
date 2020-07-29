@@ -34,6 +34,7 @@ export default function OrderDetails(props) {
     const [error, setError] = useState(null)
     const [showItems, setShowItems] = useState([])
     const [findField, setFindField] = useState('')
+    const [itemCategory, setItemCategory] = useState('all')
 
 
     const config = {
@@ -149,6 +150,20 @@ export default function OrderDetails(props) {
         return setShowItems(result)
     }
 
+    const filterBy = (event) => {
+        if (itemCategory === 'all') {
+            return setShowItems(allItems)
+        }
+        const result = allItems.filter((item) => item.category === itemCategory)
+        return setShowItems(result)
+    }
+
+    useEffect(() => {
+        filterBy()
+    }, [itemCategory])
+
+
+
 
     return (
         <>
@@ -165,6 +180,7 @@ export default function OrderDetails(props) {
                 {items && <Items items={items} btnText='delete' fnHandlerDelete={deleteItem} />}
             </div>
             <div className="items-container">
+                <FilterBy options={['food', 'drink', 'all']} handlerOnchange={(e) => setItemCategory(e.target.value)} />
                 <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
                 {showItems && <Items items={showItems} btnText={'add'} fnHandlerDelete={addItem} />}
             </div>

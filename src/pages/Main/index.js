@@ -106,7 +106,7 @@ export default function Main() {
 
 
     return (
-        <>
+        <div>
             <Navbar />
             <Lottie className="lottieFile" options={defaultOptionsAnimation}
                 height={"auto"}
@@ -145,6 +145,6 @@ export default function Main() {
                 {orders && <Orders orders={showOrders} />}
             </div>
 
-        </>
+        </div>
     );
 }
