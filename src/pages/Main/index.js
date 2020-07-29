@@ -139,8 +139,8 @@ export default function Main() {
             </div>
             <div className="orders-container">
                 <div className="search-container">
+                    <FilterBy title={'Status'} options={['paid', 'pending', 'all']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
                     <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
-                    <FilterBy options={['paid', 'pending', 'all']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
                 </div>
                 {orders && <Orders orders={showOrders} />}
             </div>

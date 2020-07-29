@@ -180,8 +180,12 @@ export default function OrderDetails(props) {
                 {items && <Items items={items} btnText='delete' fnHandlerDelete={deleteItem} />}
             </div>
             <div className="items-container">
-                <FilterBy options={['food', 'drink', 'all']} handlerOnchange={(e) => setItemCategory(e.target.value)} />
-                <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                <div className="searchbar-items">
+                    <h3>ADD TO ORDER</h3>
+                    <FilterBy title={'Category'} options={['food', 'drink', 'all']} handlerOnchange={(e) => setItemCategory(e.target.value)} />
+                    <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+
+                </div>
                 {showItems && <Items items={showItems} btnText={'add'} fnHandlerDelete={addItem} />}
             </div>
         </>
