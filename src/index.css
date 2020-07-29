@@ -19,6 +19,15 @@ code {
   margin:0 auto;
 }
 
+.content {
+  width: 90vw;
+  margin: auto;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .btn-orange{
   color:white;
   background:#FF9900;
@@ -102,6 +111,17 @@ code {
   font-size: 0.8rem;
 }
 
+.btn-coral{
+  color:white;
+  background: #EF536F;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
 .text-coral {
   color: #EF536F;
   font-weight: bold;
@@ -115,6 +135,14 @@ code {
 .text-navy {
   color: #575A89;
   font-weight: bold;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.img-big {
+  margin: 40px;
 }
 
 

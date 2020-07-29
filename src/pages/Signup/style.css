@@ -1,6 +1,19 @@
-.login-form{
-    display:flex;
-    flex-direction:column;
-    width: 90%;
-    margin: 0 auto;
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    max-width: 400px;
+}
+
+.signup-form input {
+    height: 40px;
+    margin: 7px;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+.signup-form button {
+    height: 40px;
+    margin: 7px;
+    border-radius: 15px;
 }
