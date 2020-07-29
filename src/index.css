@@ -38,6 +38,16 @@ code {
   text-transform:uppercase;
   font-size: 0.8rem;
 }
+.btn-back{
+  color:white;
+  background:#6197C8;
+  border:none;
+  border-radius:20px;
+  padding:10px 10px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 0.8rem;
+}
 .btn-add{
   color:white;
   background:#3DBF4A;

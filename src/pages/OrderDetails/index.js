@@ -116,6 +116,10 @@ export default function OrderDetails(props) {
                     isClickToPauseDisabled={true}
                 />
             </div>
+            <div className="back-button">
+                <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
+
+            </div>
             {order && <OrderDetailsCard order={order} isChecked={checked} handleChange={handleChange} />}
             <div className="items-container">
                 {items && <Items items={items} fnHandlerDelete={deleteItem} btnText={'delete'} />}

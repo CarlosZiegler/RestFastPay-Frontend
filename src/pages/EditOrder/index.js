@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
 import OrderEditCard from '../../components/OrderEditCard'
+import SearchBar from '../../components/SearchBar'
+import FilterBy from '../../components/FilterBy'
 import Items from '../../components/Items'
 import api from "../../services/api";
 
@@ -30,6 +32,8 @@ export default function OrderDetails(props) {
     const [order, setOrder] = useState(null)
     const [checked, setChecked] = useState(false)
     const [error, setError] = useState(null)
+    const [showItems, setShowItems] = useState([])
+    const [findField, setFindField] = useState('')
 
 
     const config = {
@@ -45,6 +49,9 @@ export default function OrderDetails(props) {
     useEffect(() => {
         setItems(items)
     }, [items])
+    useEffect(() => {
+        setShowItems(allItems)
+    }, [allItems])
 
     const getItemsFromOrder = async () => {
         try {
@@ -71,6 +78,7 @@ export default function OrderDetails(props) {
             }
             setAllItems(data)
 
+
         } catch (error) {
             console.log(error)
         }
@@ -88,6 +96,7 @@ export default function OrderDetails(props) {
             console.log(error)
         }
     }
+
     const addItem = async (itemId) => {
         try {
             const updateOrderItems = [...items.map(({ _id }) => _id), itemId]
@@ -99,6 +108,7 @@ export default function OrderDetails(props) {
             console.log(error)
         }
     }
+
     const updateStatus = async (itemId) => {
         try {
             let data
@@ -124,11 +134,20 @@ export default function OrderDetails(props) {
         updateStatus()
     }, [checked])
 
+    useEffect(() => {
+        findOrders()
+    }, [findField])
+
 
 
     const handleChange = e => {
         setChecked(e.target.checked);
     };
+
+    const findOrders = () => {
+        const result = allItems.filter(item => item.name.toLowerCase().includes(findField.toLowerCase()) || item.number == findField)
+        return setShowItems(result)
+    }
 
 
     return (
@@ -146,7 +165,8 @@ export default function OrderDetails(props) {
                 {items && <Items items={items} btnText='delete' fnHandlerDelete={deleteItem} />}
             </div>
             <div className="items-container">
-                {allItems && <Items items={allItems} btnText={'add'} fnHandlerDelete={addItem} />}
+                <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                {showItems && <Items items={showItems} btnText={'add'} fnHandlerDelete={addItem} />}
             </div>
         </>
     );
