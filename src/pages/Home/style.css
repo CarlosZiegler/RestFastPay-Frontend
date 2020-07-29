@@ -18,26 +18,17 @@ h1, p {
     margin: 4vh;
 }
 
-.signup-form {
+.getstarted-btn {
+    width: 70vw;
+    height: 40px;
+    background-color: rgba(239, 83, 111, 0.9);
+    border-radius: 15px;
     display: flex;
-    flex-direction: column;
-    width: 80vw;
+    justify-content: center;
+    align-items: center;
 }
 
-.signup-form input {
-    height: 7vh;
-    margin: 7px;
-    border-radius: 15px;
-    border: 1px solid gray;
-}
-
-.signup-form button {
-    box-sizing: border-box;
-    height: 7vh;
-    margin: 7px;
-    border-radius: 15px;
-    border: none;
-    background-color: rgba(61, 191, 74, 0.9);
+.getstarted-btn a {
     font-size: initial;
     font-weight: bold;
     color: white;

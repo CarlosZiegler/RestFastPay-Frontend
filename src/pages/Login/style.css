@@ -1,6 +1,39 @@
-.login-form{
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+#root {
+    font-family: Roboto;
+}
+.container {
+    width: 90vw;
     display:flex;
     flex-direction:column;
-    width: 90%;
-    margin: 0 auto;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+h1, p {
+    margin: 0;
+}
+
+.img-big {
+    margin: 4vh;
+}
+
+.login-form input {
+    height: 7vh;
+    margin: 7px;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+.login-form button {
+    box-sizing: border-box;
+    height: 7vh;
+    margin: 7px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgba(61, 191, 74, 0.9);
+    font-size: initial;
+    font-weight: bold;
+    color: white;
+}
+
