@@ -27,7 +27,9 @@ export default function OrderDetails(props) {
     const [items, setItems] = useState([])
     const [orderId, setOrderId] = useState(props.match.params.id)
     const [order, setOrder] = useState(null)
+    const [checked, setChecked] = useState(false)
     const [error, setError] = useState(null)
+
 
     const config = {
         headers: { Authorization: `Bearer ${token}` }
@@ -49,9 +51,12 @@ export default function OrderDetails(props) {
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
-            console.log(data)
             setOrder(data)
             setItems(data.itemsId)
+            if (data.status === 'paid') {
+                setChecked(true)
+            }
+
         } catch (error) {
             console.log(error)
         }
@@ -68,11 +73,34 @@ export default function OrderDetails(props) {
             console.log(error)
         }
     }
+    const updateStatus = async (itemId) => {
+        try {
+            let data
+            if (checked) {
+                data = { status: 'paid' }
+            } else {
+                data = { status: 'pending' }
+            }
+            const result = await api.put(`/order/update/${orderId}`, data, config);
+            getItemsFromOrder()
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
         getItemsFromOrder()
-        console.log(order)
     }, [])
+    useEffect(() => {
+        updateStatus()
+    }, [checked])
+
+
+
+    const handleChange = e => {
+        setChecked(e.target.checked);
+    };
 
 
     return (
@@ -85,7 +113,7 @@ export default function OrderDetails(props) {
                     isClickToPauseDisabled={true}
                 />
             </div>
-            {order && <OrderDetailsCard order={order} />}
+            {order && <OrderDetailsCard order={order} isChecked={checked} handleChange={handleChange} />}
             <div className="items-container">
                 {items && <Items items={items} fnHandlerDelete={deleteItem} />}
             </div>

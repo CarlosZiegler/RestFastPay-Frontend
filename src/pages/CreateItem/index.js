@@ -36,7 +36,7 @@ export default function CreateItem() {
     return (<>
         <Navbar />
         <div className="container">
-            <h1>Create Table</h1>
+            <h1>Create Item</h1>
             <form className="create-order-form">
                 <input type="text" className="" placeholder="Name" value={name} required onChange={(e) => setName(e.target.value)} />
                 <input type="number" className="" placeholder="Price" value={price} step="0.01" min="0" required onChange={(e) => setPrice(Number(e.target.value))} />
