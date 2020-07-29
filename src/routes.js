@@ -7,6 +7,7 @@ import Logout from "./pages/Logout";
 import Signup from "./pages/Signup";
 import Main from "./pages/Main";
 import OrderDetails from "./pages/OrderDetails";
+import EditOrder from "./pages/EditOrder";
 import CreateTable from "./pages/CreateTable";
 import CreateItem from "./pages/CreateItem";
 
@@ -22,6 +23,7 @@ export default function Routes() {
             <Route path="/main" exact component={Main} />
             <Route path="/order/create" exact component={Main} />
             <Route exact path="/order/:id" component={OrderDetails} />
+            <Route exact path="/order/edit/:id" component={EditOrder} />
             <Route path="/item/create" exact component={CreateItem} />
             <Route path="/table/create" exact component={CreateTable} />
         </BrowserRouter>

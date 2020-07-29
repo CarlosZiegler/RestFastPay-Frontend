@@ -6,9 +6,6 @@ import './style.css'
 export default function index({ order, handleChange, isChecked }) {
     const { _id, tableId, created_at, subtotal, vat, total, status } = order
     const lastTenDigitsOfId = _id.slice(-10)
-
-
-
     return (
 
         <div className="order-details-card">
@@ -21,7 +18,7 @@ export default function index({ order, handleChange, isChecked }) {
                     offstyle="btn-danger"
                     onstyle="btn-success"
                 />
-                <span className={isChecked ? `status-paid` : 'status-pending'}>{isChecked ? `PAID` : 'PENDING'}</span>
+                <span className={isChecked ? `status-paid-card` : 'status-pending-card'}>{isChecked ? `PAID` : 'PENDING'}</span>
             </div>
             <div className="order-details-body">
                 <div className="order-column-left">
@@ -38,7 +35,7 @@ export default function index({ order, handleChange, isChecked }) {
                 <div className="order-column-right">
                     <p className="order-description">Table NR:</p>
                     <span className="order-table-number">{tableId?.number}</span>
-                    <Link className="btn-orange" to={`/order/${_id}`}>ADD ITEM</Link>
+                    <Link className={!isChecked ? `btn-add` : 'btn-add disabled'} to={`/order/edit/${_id}`}>ADD ITEM</Link>
                 </div>
             </div>
         </div>

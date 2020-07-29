@@ -28,10 +28,20 @@
     border-radius: 20px 20px 0 0 ;
     margin-top: 20px;
 }
+.my-items-container{
+    background: rgba(126, 217, 135, 0.3);
+    border-radius: 20px 20px 0 0 ;
+    margin-top: 20px;
+}
 .lottie-container-details{
     display: flex;
-    width:120px;
+    width:80px;
     margin: 0 auto;
     border-radius:10px;
     background:#EF536F
+}
+.order-buttons-group{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
 }
