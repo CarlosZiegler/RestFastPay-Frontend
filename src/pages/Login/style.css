@@ -1,6 +1,32 @@
-.login-form{
+.content {
+    width: 90vw;
+    margin: auto;
     display:flex;
     flex-direction:column;
-    width: 90%;
-    margin: 0 auto;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+.no-margin {
+    margin: 0;
+}
+
+.img-big {
+    margin: 40px;
+}
+
+.login-form input {
+    height: 40px;
+    margin: 7px;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+.login-form button {
+    height: 40px;
+    margin: 7px;
+    border-radius: 15px;
+}
+
+
+
