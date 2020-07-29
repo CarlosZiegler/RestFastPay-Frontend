@@ -91,4 +91,30 @@ code {
   margin-left: 10px;
 }
 
+.btn-green{
+  color:white;
+  background: #06A847;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.text-coral {
+  color: #EF536F;
+  font-weight: bold;
+}
+
+.text-gray {
+  color: #3F3D56;
+  font-weight: bold;
+}
+
+.text-navy {
+  color: #575A89;
+  font-weight: bold;
+}
+
 
