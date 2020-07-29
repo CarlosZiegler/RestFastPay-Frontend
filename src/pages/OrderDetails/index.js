@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
+import OrderDetailsCard from '../../components/OrderDetailsCard'
 import Items from '../../components/Items'
 import api from "../../services/api";
 
@@ -25,6 +26,7 @@ export default function OrderDetails(props) {
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [items, setItems] = useState([])
     const [orderId, setOrderId] = useState(props.match.params.id)
+    const [order, setOrder] = useState(null)
     const [error, setError] = useState(null)
 
     const config = {
@@ -47,6 +49,8 @@ export default function OrderDetails(props) {
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
+            console.log(data)
+            setOrder(data)
             setItems(data.itemsId)
         } catch (error) {
             console.log(error)
@@ -55,11 +59,9 @@ export default function OrderDetails(props) {
 
     const deleteItem = async (itemId) => {
         try {
-
             const updateOrderItems = items.filter(item => item._id !== itemId)?.map(({ _id }) => _id)
             const data = { itemsId: updateOrderItems }
             const result = await api.put(`/order/update/${orderId}`, data, config);
-            console.log(updateOrderItems)
             getItemsFromOrder()
 
         } catch (error) {
@@ -69,6 +71,7 @@ export default function OrderDetails(props) {
 
     useEffect(() => {
         getItemsFromOrder()
+        console.log(order)
     }, [])
 
 
@@ -82,10 +85,10 @@ export default function OrderDetails(props) {
                     isClickToPauseDisabled={true}
                 />
             </div>
+            {order && <OrderDetailsCard order={order} />}
             <div className="items-container">
                 {items && <Items items={items} fnHandlerDelete={deleteItem} />}
             </div>
-
         </>
     );
 }
