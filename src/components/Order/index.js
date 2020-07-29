@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 
 export default function index({ order }) {
@@ -12,7 +13,7 @@ export default function index({ order }) {
             <td className="table-info order-status"><span className={status === 'paid' ? `status-paid` : 'status-pending'}>{status}</span></td>
             <td className='table-info order-total'>€{total.toFixed(2)}</td>
             <td className='table-info'>
-                <button className="btn-orange">Details</button>
+                <Link className="btn-orange" to={`/order/${_id}`}>Details</Link>
             </td>
         </tr>
     )

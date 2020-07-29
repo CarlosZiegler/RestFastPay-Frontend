@@ -99,6 +99,7 @@ export default function Main() {
         const result = orders.filter((order) => order.status === orderStatus)
         return setShowOrders(result)
     }
+
     useEffect(() => {
         filterBy()
     }, [orderStatus])
@@ -139,7 +140,7 @@ export default function Main() {
             <div className="orders-container">
                 <div className="search-container">
                     <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
-                    <FilterBy options={['paid', 'pending']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
+                    <FilterBy options={['paid', 'pending', 'all']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
                 </div>
                 {orders && <Orders orders={showOrders} />}
             </div>
