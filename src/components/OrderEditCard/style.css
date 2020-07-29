@@ -86,4 +86,9 @@
 .order-table-number{
     font-size:3rem;
 }
+.order-buttons-group{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
 

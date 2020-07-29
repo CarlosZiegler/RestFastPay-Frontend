@@ -35,13 +35,8 @@
 }
 .lottie-container-details{
     display: flex;
-    width:80px;
     margin: 0 auto;
     border-radius:10px;
     background:#EF536F
 }
-.order-buttons-group{
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-}
+

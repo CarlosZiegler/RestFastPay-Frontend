@@ -26,8 +26,7 @@ export default function index({ order, handlerOnchange, isChecked, options }) {
                 </div>
             </div>
             <div className="order-buttons-group">
-                <Link className="btn-cancel">Cancel</Link>
-                <Link className="btn-save">Save</Link>
+                <Link className="btn-save" to={`/order/${_id}`}>Save</Link>
             </div>
         </div>
     )

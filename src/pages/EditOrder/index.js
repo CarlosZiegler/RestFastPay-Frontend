@@ -137,7 +137,7 @@ export default function OrderDetails(props) {
             <div className="lottie-container-details">
                 <Lottie className="lottieFile" options={defaultOptionsAnimation}
                     height={"auto"}
-                    width={"100px"}
+                    width={"200px"}
                     isClickToPauseDisabled={true}
                 />
             </div>
