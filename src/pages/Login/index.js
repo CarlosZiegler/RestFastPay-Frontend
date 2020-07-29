@@ -22,6 +22,7 @@ export default function Login() {
             }
             localStorage.clear()
             localStorage.setItem('token', data?.token)
+            localStorage.setItem('userId', data?.userId)
             history.push('/main')
         } catch (error) {
             console.log(error)
