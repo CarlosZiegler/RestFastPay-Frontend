@@ -1,6 +1,19 @@
-.login-form{
-    display:flex;
-    flex-direction:column;
-    width: 90%;
-    margin: 0 auto;
+.create-table-form {
+    width: 100%;
+    margin: 20px;
+}
+.create-table-form input {
+    height: 35px;
+    width: 70%;
+    margin: 7px;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+.tables-container {
+    background:rgba(255, 185, 185, 0.24);
+    border-radius: 20px 20px 0 0 ;
+    /* margin: 20px 0; */
+    /* padding-top: 20px; */
+    width: 100%;
 }
