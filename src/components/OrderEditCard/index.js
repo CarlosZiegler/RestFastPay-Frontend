@@ -19,7 +19,7 @@ export default function index({ order, handlerOnchange, isChecked, options }) {
                     {tableId ? <span className="order-table-number">{tableId?.number}</span> :
                         <select name="table-list" className="table-list" id="table-list" onChange={handlerOnchange} >
                             <option value='all'>-</option>
-                            {options && options.map((option, index) => <option key={index} value={option} >{option}</option>)}
+                            {options && options.map((option, index) => <option key={index} value={option._id} >{option.number}</option>)}
                         </select>
                     }
 

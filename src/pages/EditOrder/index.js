@@ -35,6 +35,8 @@ export default function OrderDetails(props) {
     const [showItems, setShowItems] = useState([])
     const [findField, setFindField] = useState('')
     const [itemCategory, setItemCategory] = useState('all')
+    const [allTableFree, setAllTableFree] = useState([])
+    const [selectedTable, setSelectedTable] = useState('')
 
 
     const config = {
@@ -69,6 +71,12 @@ export default function OrderDetails(props) {
         } catch (error) {
             console.log(error)
         }
+    }
+    const getAllFreeTables = async () => {
+        const { data } = await api.get('/tables', config)
+        setAllTableFree(data.filter(table => table.status === 'free'))
+        // setAllTableFree(data)
+
     }
     const getAllItemsFromAPI = async () => {
         try {
@@ -125,6 +133,19 @@ export default function OrderDetails(props) {
             console.log(error)
         }
     }
+    const updateTable = async () => {
+        if (order === null) {
+            return
+        }
+        try {
+            await api.put(`/order/update/${orderId}`, { tableId: selectedTable }, config);
+            await api.put(`/table/update/${selectedTable}`, { status: 'occupied' }, config);
+            getItemsFromOrder()
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
         getItemsFromOrder()
@@ -139,10 +160,18 @@ export default function OrderDetails(props) {
         findOrders()
     }, [findField])
 
+    useEffect(() => {
+        getAllFreeTables()
+    }, [order])
+
 
 
     const handleChange = e => {
         setChecked(e.target.checked);
+    };
+
+    const handleChangeTable = e => {
+        setSelectedTable(e.target.value);
     };
 
     const findOrders = () => {
@@ -162,6 +191,10 @@ export default function OrderDetails(props) {
         filterBy()
     }, [itemCategory])
 
+    useEffect(() => {
+        updateTable()
+    }, [selectedTable])
+
 
 
     return (
@@ -174,7 +207,7 @@ export default function OrderDetails(props) {
                     isClickToPauseDisabled={true}
                 />
             </div>
-            {order && <OrderEditCard order={order} isChecked={checked} handleChange={handleChange} />}
+            {order && <OrderEditCard order={order} isChecked={checked} handlerOnchange={handleChangeTable} options={allTableFree} />}
             <div className="my-items-container">
                 {items && <Items items={items} btnText='delete' fnHandlerDelete={deleteItem} />}
             </div>

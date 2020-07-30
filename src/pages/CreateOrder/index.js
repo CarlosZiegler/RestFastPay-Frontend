@@ -61,15 +61,11 @@ export default function OrderDetails(props) {
                     "status": "pending"
                 }
                 const result = await api.post(`order/create`, newOrder, config);
-                // setOrderId(result.data._id)
                 const { data } = await api.get(`/order/${result.data._id}`, config);
                 if (data?.hasOwnProperty('error')) {
                     return setError(data.error)
                 }
-                // setOrder(data)
-                // if (data.status === 'paid') {
-                //     setChecked(true)
-                // }
+
                 history.push(`/order/${result.data._id}`)
             }
 
