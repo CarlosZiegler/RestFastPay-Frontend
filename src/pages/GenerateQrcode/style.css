@@ -1,0 +1,59 @@
+.create-item-form{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    padding:8px;
+    background:rgba(216, 232, 248, 0.32);
+    border-radius:20px;
+    margin:0 5px;
+}
+.form-group-container{
+    display: flex;
+    justify-content:start;
+    align-items:flex-end;
+    width: 100%;
+    margin-top: 5px;
+}
+.create-item-form :nth-child(n){
+    margin-top:5px;
+    margin-right:5px;
+}
+.input-item-price{
+    width:60px;
+    height: 30px;
+    padding:0
+}
+.input-item-price::placeholder{
+    padding:10px;
+ }
+
+.item-create-label{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    color: #90001A;
+    font-weight: bold;
+    
+}
+.create-item-form input, select {
+    height: 30px;
+    border: none;
+    min-width:80px;
+    border-radius: 10px;
+    background: #fff;
+    text-transform: uppercase;
+    color: rgba(63, 61, 86, 0.60);
+}
+.btn-create-item{
+    padding: 15px 30px;
+    border-radius: 20px;
+    
+}
+.input-name-item{
+    width: 100%;
+
+}
+.input-name-item::placeholder{
+   padding:10px;
+}

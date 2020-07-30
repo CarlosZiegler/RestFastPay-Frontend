@@ -34,11 +34,11 @@ export default function CheckoutOrder(props) {
         headers: { Authorization: `Bearer ${token}` }
     };
 
-    useEffect(() => {
-        if (!token) {
-            history.push('/login')
-        }
-    }, [token])
+    // useEffect(() => {
+    //     if (!token) {
+    //         history.push('/login')
+    //     }
+    // }, [token])
 
     useEffect(() => {
         getItemsFromOrder()
@@ -53,7 +53,7 @@ export default function CheckoutOrder(props) {
 
     const getItemsFromOrder = async () => {
         try {
-            const { data } = await api.get(`/order/${orderId}`, config);
+            const { data } = await api.get(`payment/order/${orderId}`);
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
@@ -65,10 +65,6 @@ export default function CheckoutOrder(props) {
             console.log(error)
         }
     }
-
-
-
-
 
     return (
         <>

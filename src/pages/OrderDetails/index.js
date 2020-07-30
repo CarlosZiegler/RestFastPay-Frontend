@@ -128,7 +128,7 @@ export default function OrderDetails(props) {
             </div>
             <div className="back-button">
                 <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
-
+                <Link className="btn-back" to={`/checkout/generate/${orderId}`}> Generate QRCODE</Link>
             </div>
             {order && <OrderDetailsCard order={order} isChecked={checked} handleChange={handleChange} />}
             <div className="items-container">
