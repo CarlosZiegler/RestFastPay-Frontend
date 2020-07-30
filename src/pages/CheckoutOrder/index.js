@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
-import OrderDetailsCard from '../../components/OrderDetailsCard'
+import OrderDetailsCheckout from '../../components/OrderDetailsCheckout'
 import Items from '../../components/Items'
 import api from "../../services/api";
 
 
-import listDataAnimation from '../../assets/lotties/18869-menu-loading.json'
+import listDataAnimation from '../../assets/lotties/23730-3d-mobile-payment.json'
 
 
 import './style.css'
@@ -118,21 +118,17 @@ export default function OrderDetails(props) {
 
     return (
         <>
-            <Navbar />
-            <div className="lottie-container-details">
+
+            <div className="lottie-container-checkout">
                 <Lottie className="lottieFile" options={defaultOptionsAnimation}
                     height={"auto"}
-                    width={"100px"}
+                    width={"300px"}
                     isClickToPauseDisabled={true}
                 />
             </div>
-            <div className="back-button">
-                <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
-
-            </div>
-            {order && <OrderDetailsCard order={order} isChecked={checked} handleChange={handleChange} />}
+            {order && <OrderDetailsCheckout order={order} />}
             <div className="items-container">
-                {items && <Items items={items} fnHandlerDelete={deleteItem} btnText={'delete'} />}
+                {items && <Items items={items} />}
             </div>
         </>
     );
