@@ -1,11 +1,10 @@
 .btn-getstarted {
-    height: 40px;
-    width: 80vw;
+    height: 30px;
+    width: 70vw;
     max-width: 400px;
     margin: 7px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
 }
