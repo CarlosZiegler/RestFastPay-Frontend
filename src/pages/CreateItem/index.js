@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import Navbar from '../../components/Navbar'
+import { useHistory } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
+import Items from '../../components/Items'
 import api from "../../services/api";
 
 import './style.css'
@@ -9,9 +10,41 @@ export default function CreateItem() {
     const history = useHistory()
     const [name, setName] = useState(null)
     const [price, setPrice] = useState(null)
-    const [urlImage, setUrlImage] = useState(null)
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [error, setError] = useState(null)
+    const [items, setItems] = useState([])
+
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+
+    useEffect(() => {
+        getAllItemsFromAPI()
+    }, [])
+
+    const deleteItem = async (itemId) => {
+        try {
+            await api.delete(`/item/delete/${itemId}`, config);
+            getAllItemsFromAPI()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getAllItemsFromAPI = async () => {
+        try {
+            const { data } = await api.get(`/items`, config);
+            console.log(data)
+            if (data?.hasOwnProperty('error')) {
+                return setError(data.error)
+            }
+            setItems(data)
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     const handleCreateItem = async () => {
@@ -43,6 +76,9 @@ export default function CreateItem() {
                 <button type="button" onClick={() => handleCreateItem()}>Create Item</button>
                 {error && <span>{error?.message}</span>}
             </form>
+            <div className="my-items-container">
+                {items && <Items items={items} btnText='delete' fnHandlerDelete={deleteItem} />}
+            </div>
         </div>
     </>);
 }

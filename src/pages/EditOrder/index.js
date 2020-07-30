@@ -52,9 +52,36 @@ export default function OrderDetails(props) {
     useEffect(() => {
         setItems(items)
     }, [items])
+
     useEffect(() => {
         setShowItems(allItems)
     }, [allItems])
+
+    useEffect(() => {
+        getItemsFromOrder()
+        getAllItemsFromAPI()
+    }, [])
+
+    useEffect(() => {
+        updateStatus()
+    }, [checked])
+
+    useEffect(() => {
+        findOrders()
+    }, [findField])
+
+    useEffect(() => {
+        getAllFreeTables()
+    }, [order])
+
+    useEffect(() => {
+        filterBy()
+    }, [itemCategory])
+
+    useEffect(() => {
+        updateTable()
+    }, [selectedTable])
+
 
     const getItemsFromOrder = async () => {
         try {
@@ -75,9 +102,8 @@ export default function OrderDetails(props) {
     const getAllFreeTables = async () => {
         const { data } = await api.get('/tables', config)
         setAllTableFree(data.filter(table => table.status === 'free'))
-        // setAllTableFree(data)
-
     }
+
     const getAllItemsFromAPI = async () => {
         try {
             const { data } = await api.get(`/items`, config);
@@ -147,25 +173,6 @@ export default function OrderDetails(props) {
         }
     }
 
-    useEffect(() => {
-        getItemsFromOrder()
-        getAllItemsFromAPI()
-    }, [])
-
-    useEffect(() => {
-        updateStatus()
-    }, [checked])
-
-    useEffect(() => {
-        findOrders()
-    }, [findField])
-
-    useEffect(() => {
-        getAllFreeTables()
-    }, [order])
-
-
-
     const handleChange = e => {
         setChecked(e.target.checked);
     };
@@ -186,16 +193,6 @@ export default function OrderDetails(props) {
         const result = allItems.filter((item) => item.category === itemCategory)
         return setShowItems(result)
     }
-
-    useEffect(() => {
-        filterBy()
-    }, [itemCategory])
-
-    useEffect(() => {
-        updateTable()
-    }, [selectedTable])
-
-
 
     return (
         <>
