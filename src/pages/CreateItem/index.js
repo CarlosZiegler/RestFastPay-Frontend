@@ -36,7 +36,6 @@ export default function CreateItem() {
     const getAllItemsFromAPI = async () => {
         try {
             const { data } = await api.get(`/items`, config);
-            console.log(data)
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
@@ -63,6 +62,7 @@ export default function CreateItem() {
             }
             setName('')
             setPrice('')
+            getAllItemsFromAPI()
         } catch (error) {
             console.log(error)
         }
@@ -82,12 +82,12 @@ export default function CreateItem() {
             <form className="create-item-form">
                 <label className="item-create-label" htmlFor="category">
                     Name:
-                <input type="text" className="input-name-item" placeholder="Enter Name" value={name} required onChange={(e) => setName(e.target.value)} />
+                <input type="text" className="input-name-item" required placeholder="Enter Name" value={name} required onChange={(e) => setName(e.target.value)} />
                 </label>
                 <div className="form-group-container">
                     <label className="item-create-label" htmlFor="category">
                         Category
-                    <select name="category" className="category" id="category" onChange={(e) => setCategory(e.target.value)} required >
+                    <select name="category" className="category" required id="category" onChange={(e) => setCategory(e.target.value)} required >
                             <option value='food'>food</option>
                             <option value='drink'>drink</option>
                         </select>
@@ -95,7 +95,8 @@ export default function CreateItem() {
                     <label className="item-create-label" htmlFor="category">
                         Price
                     <input type="number"
-                            className="input-item-price" placeholder="Price" value={price} step="0.01" min="0" required onChange={(e) => setPrice(Number(e.target.value))} />
+                            className="input-item-price" placeholder="Price" required
+                            value={price} step="0.01" min="0" required onChange={(e) => setPrice(Number(e.target.value))} />
                     </label>
                     <button type="button" className="btn-green btn-create-item" onClick={() => handleCreateItem()}>Create Item</button>
                 </div>
