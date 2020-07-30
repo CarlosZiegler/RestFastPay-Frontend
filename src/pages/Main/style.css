@@ -11,6 +11,26 @@
     display:flex;
     justify-content:center;
     align-items:center;
+    width:100%;
+    flex-wrap: wrap;
+}
+.img-lottie{
+    background:#FFD43C;
+    margin: 5px ;
+    padding: 10px;
+    height:120px;
+    width:120px;
+    display: flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+    border-radius:25px;
+    box-shadow: center;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(230,230,230,1);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(230,230,230,1);
+    box-shadow: 10px 10px 5px 0px rgba(230,230,230,1);
+    font-weight: bold;
+    color: #2F2E41;
 }
 .btn-container{
     display: flex;
@@ -38,9 +58,13 @@
 .search-container{
     width:90%;
     display: flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     margin: 0 auto;
 
+}
+.header-table{
+    text-align:center;
+    color:#575A88;
+    margin:2px;
 }

@@ -46,7 +46,7 @@ export default function CreateTable() {
                 return setError(data.error)
             }
             setTables(data)
-            
+
         } catch (error) {
             console.log(error)
         }
@@ -55,7 +55,7 @@ export default function CreateTable() {
     useEffect(() => {
         getAllTables()
     }, [])
-    
+
 
     const deleteTable = async (tableId) => {
         try {
@@ -73,18 +73,21 @@ export default function CreateTable() {
     return (<>
         <Navbar />
         <div className="content">
-        <img className="img-big" src={tableImg} alt="table" style={{width:"200px"}}/>
+            <img className="img-big" src={tableImg} alt="table" style={{ width: "200px" }} />
+            <div className="back-button">
+                <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
+            </div>
             <h1 className="no-margin">Create Table</h1>
             <form className="create-table-form">
                 <input type="number" className="" value={number} placeholder="Number" required onChange={(e) => setNumber(e.target.value)} />
                 <button className="btn-add" type="button" onClick={() => handleCreateTable()}>Create</button>
                 {error && <span>{error?.message}</span>}
             </form>
-            {tables.length>0 && <div className="tables-container">
-                <Tables tables={tables} handleTableDelete={deleteTable}/>
+            {tables.length > 0 && <div className="tables-container">
+                <Tables tables={tables} handleTableDelete={deleteTable} />
             </div>
             }
-            {tables.length <1 && <h3>No Tables to show</h3>}
+            {tables.length < 1 && <h3>No Tables to show</h3>}
         </div>
     </>);
 }
