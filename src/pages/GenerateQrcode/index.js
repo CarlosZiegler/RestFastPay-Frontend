@@ -33,7 +33,7 @@ export default function Qrcode(props) {
                 />
             </div>
             <div className="img-container">
-                <QRCode size={300} className="Qrcode" value={`https://restfastpay-lase53lfa.vercel.app/checkout/order/${orderId}`} />
+                <QRCode size={300} className="Qrcode" value={`https://restfastpay.vercel.app/checkout/order/${orderId}`} />
             </div>
             <div className="back-button">
                 <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
