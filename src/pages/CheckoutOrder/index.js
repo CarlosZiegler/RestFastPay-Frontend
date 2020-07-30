@@ -53,7 +53,7 @@ export default function CheckoutOrder(props) {
 
     const getItemsFromOrder = async () => {
         try {
-            const { data } = await api.get(`/order/${orderId}`, config);
+            const { data } = await api.get(`payment/order/${orderId}`);
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
