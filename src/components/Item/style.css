@@ -13,4 +13,16 @@
     color: #575A88;
     font-weight: bold;
 }
+.img-info{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color: #F9A826;
+    font-weight: bold;
+    font-size:1.2rem
+}
+.info-thumbnail{
+    height: 30px;
+    margin-right: 2px;
+}
 

@@ -1,11 +1,10 @@
 import React from 'react'
 import Item from '../Item'
+import { v4 as uuidv4 } from 'uuid';
 import api from "../../services/api";
 import './style.css'
 
 export default function index({ items, fnHandlerDelete, btnText }) {
-
-
 
     return (
         <table className="orders-table">
@@ -19,7 +18,7 @@ export default function index({ items, fnHandlerDelete, btnText }) {
             </thead>
             <tbody>
                 {items && items.map((item) =>
-                    <Item key={item._id} item={item} btnText={btnText} fnHandlerDelete={fnHandlerDelete} />
+                    <Item key={uuidv4()} item={item} btnText={btnText} fnHandlerDelete={fnHandlerDelete} />
                 )}
             </tbody>
         </table>

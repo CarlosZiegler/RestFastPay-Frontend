@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './style.css'
 
 export default function index({ order, handleChange, isChecked }) {
-    const { _id, tableId, created_at, subtotal, vat, total, status } = order
+    const { _id, tableId, created_at, subtotal, vat, total } = order
     const lastTenDigitsOfId = _id.slice(-10)
     return (
 

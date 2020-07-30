@@ -3,7 +3,6 @@ import './style.css'
 
 export default function Toggle(props) {
     const {
-        text,
         size = "default",
         checked,
         disabled,

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar'
 import api from "../../services/api";
 import loginImg from "../../assets/login-graphics.png";
@@ -32,7 +32,7 @@ export default function Login() {
     return (<>
         <Navbar />
         <div className="content">
-        <img className="img-big" src={loginImg} alt="login"/>
+            <img className="img-big" src={loginImg} alt="login" />
             <h1 className="no-margin text-navy">Login</h1>
             <p className="no-margin text-gray">Welcome back!</p>
             <br />

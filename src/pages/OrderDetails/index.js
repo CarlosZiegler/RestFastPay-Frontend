@@ -42,8 +42,17 @@ export default function OrderDetails(props) {
     }, [token])
 
     useEffect(() => {
+        getItemsFromOrder()
+    }, [])
+
+    useEffect(() => {
+        updateStatus()
+    }, [checked])
+
+    useEffect(() => {
         setItems(items)
     }, [items])
+
 
     const getItemsFromOrder = async () => {
         try {
@@ -54,8 +63,9 @@ export default function OrderDetails(props) {
             setOrder(data)
             setItems(data.itemsId)
             if (data.status === 'paid') {
-                setChecked(true)
+                return setChecked(true)
             }
+            return
 
         } catch (error) {
             console.log(error)
@@ -69,42 +79,42 @@ export default function OrderDetails(props) {
             const updateOrderItems = items.filter((item, index) => index !== itemIndex)?.map(({ _id }) => _id)
             const data = { itemsId: updateOrderItems }
             const result = await api.put(`/order/update/${orderId}`, data, config);
-            getItemsFromOrder()
+            await getItemsFromOrder()
 
         } catch (error) {
             console.log(error)
         }
     }
     const updateStatus = async (itemId) => {
+        if (order === null || order === undefined) {
+            return
+        }
         try {
             let data
+            let statusTable
             if (checked) {
                 data = { status: 'paid' }
+                statusTable = { status: 'free' }
             } else {
                 data = { status: 'pending' }
+                statusTable = { status: 'occupied' }
             }
             const result = await api.put(`/order/update/${orderId}`, data, config);
-            getItemsFromOrder()
+
+            if (order.tableId === null || order.tableId === undefined) {
+                return
+            }
+            const setStatusTable = await api.put(`/table/update/${order.tableId?._id}`, statusTable, config);
+            await getItemsFromOrder()
 
         } catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(() => {
-        getItemsFromOrder()
-    }, [])
-
-    useEffect(() => {
-        updateStatus()
-    }, [checked])
-
-
-
     const handleChange = e => {
         setChecked(e.target.checked);
     };
-
 
     return (
         <>
