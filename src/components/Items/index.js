@@ -6,8 +6,6 @@ import './style.css'
 
 export default function index({ items, fnHandlerDelete, btnText }) {
 
-
-
     return (
         <table className="orders-table">
             <thead>

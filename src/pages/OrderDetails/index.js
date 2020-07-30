@@ -53,6 +53,10 @@ export default function OrderDetails(props) {
         setItems(items)
     }, [items])
 
+    useEffect(() => {
+        console.log('render checked', checked)
+    }, [checked])
+
     const getItemsFromOrder = async () => {
         try {
             const { data } = await api.get(`/order/${orderId}`, config);
@@ -63,8 +67,9 @@ export default function OrderDetails(props) {
             setItems(data.itemsId)
             console.log('status from DB', data.status)
             if (data.status === 'paid') {
-                setChecked(true)
+                return setChecked(true)
             }
+            return
 
         } catch (error) {
             console.log(error)
@@ -93,24 +98,18 @@ export default function OrderDetails(props) {
                 data = { status: 'pending' }
             }
             const result = await api.put(`/order/update/${orderId}`, data, config);
-            getItemsFromOrder()
+            await getItemsFromOrder()
 
         } catch (error) {
             console.log(error)
         }
     }
 
-
-
-
-
     const handleChange = e => {
         setChecked(e.target.checked);
     };
 
-    useEffect(() => {
-        console.log('render checked', checked)
-    }, [checked])
+
 
 
     return (
