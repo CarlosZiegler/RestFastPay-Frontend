@@ -48,7 +48,7 @@ export default function CreateItem() {
 
     const handleCreateItem = async () => {
         try {
-            if (name || price || category) {
+            if (!name || !price || !category) {
                 alert('Item NEED name, price and category')
                 return
             }
