@@ -34,11 +34,11 @@ export default function CheckoutOrder(props) {
         headers: { Authorization: `Bearer ${token}` }
     };
 
-    useEffect(() => {
-        if (!token) {
-            history.push('/login')
-        }
-    }, [token])
+    // useEffect(() => {
+    //     if (!token) {
+    //         history.push('/login')
+    //     }
+    // }, [token])
 
     useEffect(() => {
         getItemsFromOrder()
@@ -65,10 +65,6 @@ export default function CheckoutOrder(props) {
             console.log(error)
         }
     }
-
-
-
-
 
     return (
         <>
