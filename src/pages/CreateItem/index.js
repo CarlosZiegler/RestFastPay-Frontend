@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Items from '../../components/Items'
 import api from "../../services/api";
@@ -48,6 +48,10 @@ export default function CreateItem() {
 
     const handleCreateItem = async () => {
         try {
+            if (name || price || category) {
+                alert('Item NEED name, price and category')
+                return
+            }
             const config = {
                 headers: { Authorization: `Bearer ${token}` }
             };
@@ -77,6 +81,10 @@ export default function CreateItem() {
             <div className="img-container">
                 <img className="img-big" src={ImageItems} alt="foods" />
             </div>
+            <div className="back-button">
+                <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
+
+            </div>
             <form className="create-item-form">
                 <label className="item-create-label" htmlFor="category">
                     Name:
@@ -94,7 +102,7 @@ export default function CreateItem() {
                         Price
                     <input type="number"
                             className="input-item-price" placeholder="Price" required
-                            value={price} step="0.01" min="0" required onChange={(e) => setPrice(Number(e.target.value))} />
+                            value={price} step="0.01" min="0" onChange={(e) => setPrice(Number(e.target.value))} />
                     </label>
                     <button type="button" className="btn-green btn-create-item" onClick={() => handleCreateItem()}>Create Item</button>
                 </div>

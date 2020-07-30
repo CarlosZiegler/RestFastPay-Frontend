@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
 import OrderEditCard from '../../components/OrderEditCard'
@@ -23,7 +23,7 @@ const defaultOptionsAnimation = {
 };
 
 
-export default function OrderDetails(props) {
+export default function EditOrder(props) {
     const history = useHistory()
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [items, setItems] = useState([])
@@ -199,6 +199,10 @@ export default function OrderDetails(props) {
                     width={"200px"}
                     isClickToPauseDisabled={true}
                 />
+            </div>
+            <div className="back-button">
+                <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
+
             </div>
             {order && <OrderEditCard order={order} isChecked={checked} handlerOnchange={handleChangeTable} options={allTableFree} />}
             <div className="my-items-container">

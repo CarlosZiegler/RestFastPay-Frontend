@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
-import Navbar from '../../components/Navbar'
 import OrderDetailsCheckout from '../../components/OrderDetailsCheckout'
 import Items from '../../components/Items'
 import api from "../../services/api";
 
+import Logo from '../../assets/Logo.svg'
 
 import listDataAnimation from '../../assets/lotties/23730-3d-mobile-payment.json'
 
@@ -21,13 +21,12 @@ const defaultOptionsAnimation = {
 };
 
 
-export default function OrderDetails(props) {
+export default function CheckoutOrder(props) {
     const history = useHistory()
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [items, setItems] = useState([])
     const [orderId, setOrderId] = useState(props.match.params.id)
     const [order, setOrder] = useState(null)
-    const [checked, setChecked] = useState(false)
     const [error, setError] = useState(null)
 
 
@@ -45,9 +44,7 @@ export default function OrderDetails(props) {
         getItemsFromOrder()
     }, [])
 
-    useEffect(() => {
-        updateStatus()
-    }, [checked])
+
 
     useEffect(() => {
         setItems(items)
@@ -62,71 +59,33 @@ export default function OrderDetails(props) {
             }
             setOrder(data)
             setItems(data.itemsId)
-            if (data.status === 'paid') {
-                return setChecked(true)
-            }
-            return
+
 
         } catch (error) {
             console.log(error)
         }
     }
 
-    const deleteItem = async (itemId) => {
-        try {
-            const itemIndex = items.findIndex(item => item._id === itemId)
 
-            const updateOrderItems = items.filter((item, index) => index !== itemIndex)?.map(({ _id }) => _id)
-            const data = { itemsId: updateOrderItems }
-            const result = await api.put(`/order/update/${orderId}`, data, config);
-            await getItemsFromOrder()
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const updateStatus = async (itemId) => {
-        if (order === null || order === undefined) {
-            return
-        }
-        try {
-            let data
-            let statusTable
-            if (checked) {
-                data = { status: 'paid' }
-                statusTable = { status: 'free' }
-            } else {
-                data = { status: 'pending' }
-                statusTable = { status: 'occupied' }
-            }
-            const result = await api.put(`/order/update/${orderId}`, data, config);
 
-            if (order.tableId === null || order.tableId === undefined) {
-                return
-            }
-            const setStatusTable = await api.put(`/table/update/${order.tableId?._id}`, statusTable, config);
-            await getItemsFromOrder()
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const handleChange = e => {
-        setChecked(e.target.checked);
-    };
 
     return (
         <>
-
+            <div className="navbar">
+                <a href="/">
+                    <img className="navbar-img" src={Logo} alt="Logo" />
+                </a>
+            </div>
             <div className="lottie-container-checkout">
                 <Lottie className="lottieFile" options={defaultOptionsAnimation}
                     height={"auto"}
-                    width={"300px"}
+                    width={"250px"}
                     isClickToPauseDisabled={true}
                 />
             </div>
             {order && <OrderDetailsCheckout order={order} />}
+
             <div className="items-container">
                 {items && <Items items={items} />}
             </div>
