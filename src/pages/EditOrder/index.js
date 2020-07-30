@@ -173,10 +173,6 @@ export default function OrderDetails(props) {
         }
     }
 
-    const handleChange = e => {
-        setChecked(e.target.checked);
-    };
-
     const handleChangeTable = e => {
         setSelectedTable(e.target.value);
     };
