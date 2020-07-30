@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import Navbar from '../../components/Navbar'
 import OrderEditCard from '../../components/OrderEditCard'
@@ -90,7 +90,7 @@ export default function OrderDetails(props) {
             const itemIndex = items.findIndex(item => item._id === itemId)
             const updateOrderItems = items.filter((item, index) => index !== itemIndex)?.map(({ _id }) => _id)
             const data = { itemsId: updateOrderItems }
-            const result = await api.put(`/order/update/${orderId}`, data, config);
+            await api.put(`/order/update/${orderId}`, data, config);
             getItemsFromOrder()
 
         } catch (error) {
@@ -102,7 +102,7 @@ export default function OrderDetails(props) {
         try {
             const updateOrderItems = [...items.map(({ _id }) => _id), itemId]
             const data = { itemsId: updateOrderItems }
-            const result = await api.put(`/order/update/${orderId}`, data, config);
+            await api.put(`/order/update/${orderId}`, data, config);
             getItemsFromOrder()
 
         } catch (error) {
@@ -118,7 +118,7 @@ export default function OrderDetails(props) {
             } else {
                 data = { status: 'pending' }
             }
-            const result = await api.put(`/order/update/${orderId}`, data, config);
+            await api.put(`/order/update/${orderId}`, data, config);
             getItemsFromOrder()
 
         } catch (error) {
@@ -161,7 +161,6 @@ export default function OrderDetails(props) {
     useEffect(() => {
         filterBy()
     }, [itemCategory])
-
 
 
 

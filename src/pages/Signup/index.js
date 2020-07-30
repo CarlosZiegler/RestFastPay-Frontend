@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar'
 import api from "../../services/api";
 import signupImg from "../../assets/welcome-signup-graphics.png"
@@ -31,10 +31,10 @@ export default function Signup() {
     return (<>
         <Navbar />
         <div className="content">
-        <img className="img-big" src={signupImg} alt="signup"/>
+            <img className="img-big" src={signupImg} alt="signup" />
             <h1 className="no-margin text-navy">Signup</h1>
             <p className="no-margin text-gray">Enter your details and get connected!</p>
-            <br/>
+            <br />
             <form className="signup-form">
                 <input type="text" className="" placeholder="Display Name" required onChange={(e) => setName(e.target.value)} />
                 <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
@@ -42,8 +42,8 @@ export default function Signup() {
                 <button className="btn-coral" type="button" onClick={() => handleSignup()}>Sign Up</button>
             </form>
             {error && <span>{error?.message}</span>}
-            <br/>
-        <p className="text-gray">Already have an account? <a className="text-coral" href="/login">Log in!</a></p>
+            <br />
+            <p className="text-gray">Already have an account? <a className="text-coral" href="/login">Log in!</a></p>
         </div>
     </>);
 }

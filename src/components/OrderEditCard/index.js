@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import './style.css'
 
 export default function index({ order, handlerOnchange, isChecked, options }) {
-    const { _id, tableId, created_at, subtotal, vat, total, status } = order
-    const lastTenDigitsOfId = _id.slice(-10)
+    const { _id, tableId, subtotal, vat, total } = order
+
     return (
 
         <div className="order-details-card">

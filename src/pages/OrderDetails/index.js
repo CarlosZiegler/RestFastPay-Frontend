@@ -42,6 +42,14 @@ export default function OrderDetails(props) {
     }, [token])
 
     useEffect(() => {
+        getItemsFromOrder()
+    }, [])
+
+    useEffect(() => {
+        updateStatus()
+    }, [checked])
+
+    useEffect(() => {
         setItems(items)
     }, [items])
 
@@ -53,6 +61,7 @@ export default function OrderDetails(props) {
             }
             setOrder(data)
             setItems(data.itemsId)
+            console.log('status from DB', data.status)
             if (data.status === 'paid') {
                 setChecked(true)
             }
@@ -69,7 +78,7 @@ export default function OrderDetails(props) {
             const updateOrderItems = items.filter((item, index) => index !== itemIndex)?.map(({ _id }) => _id)
             const data = { itemsId: updateOrderItems }
             const result = await api.put(`/order/update/${orderId}`, data, config);
-            getItemsFromOrder()
+            await getItemsFromOrder()
 
         } catch (error) {
             console.log(error)
@@ -91,19 +100,17 @@ export default function OrderDetails(props) {
         }
     }
 
-    useEffect(() => {
-        getItemsFromOrder()
-    }, [])
 
-    useEffect(() => {
-        updateStatus()
-    }, [checked])
 
 
 
     const handleChange = e => {
         setChecked(e.target.checked);
     };
+
+    useEffect(() => {
+        console.log('render checked', checked)
+    }, [checked])
 
 
     return (

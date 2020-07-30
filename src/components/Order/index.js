@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './style.css'
 
 export default function index({ order }) {
-    const { _id, tableId, subtotal, vat, total, status } = order
+    const { _id, tableId, total, status } = order
     const lastFiveDigitsOfId = _id.slice(-5)
 
     return (
