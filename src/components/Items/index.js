@@ -17,8 +17,11 @@ export default function index({ items, fnHandlerDelete, btnText }) {
                 </tr>
             </thead>
             <tbody>
-                {items && items.map((item) =>
+                {items && fnHandlerDelete && items.map((item) =>
                     <Item key={uuidv4()} item={item} btnText={btnText} fnHandlerDelete={fnHandlerDelete} />
+                )}
+                {items && !fnHandlerDelete && items.map((item) =>
+                    <Item key={uuidv4()} item={item} />
                 )}
             </tbody>
         </table>

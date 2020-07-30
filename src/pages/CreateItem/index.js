@@ -40,8 +40,6 @@ export default function CreateItem() {
                 return setError(data.error)
             }
             setItems(data)
-
-
         } catch (error) {
             console.log(error)
         }
