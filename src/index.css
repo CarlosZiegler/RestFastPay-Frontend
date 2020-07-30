@@ -38,6 +38,32 @@ code {
   text-transform:uppercase;
   font-size: 0.8rem;
 }
+.btn-back{
+  color:white;
+  background:#6197C8;
+  border:none;
+  border-radius:20px;
+  padding:10px 10px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 0.8rem;
+}
+.btn-add{
+  color:white;
+  background:#3DBF4A;
+  border:none;
+  border-radius:10px;
+  padding:10px 10px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 0.8rem;
+}
+.disabled{
+  color:rgb(80, 80, 80);
+  background:#c6c6c6;
+  pointer-events:none;
+  
+}
 .btn-red{
   color:white;
   background:#FF002E;
@@ -47,6 +73,41 @@ code {
   font-weight: bold;
   text-transform:uppercase;
   font-size: 0.8rem;
+}
+.btn-green{
+  color:white;
+  background:rgba(61, 191, 74, 0.9);
+  border:none;
+  border-radius:10px;
+  padding:5px 10px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 0.8rem;
+}
+.btn-cancel{
+  color:white;
+  background:#FF002E;
+  border:none;
+  border-radius:20px;
+  padding:10px 20px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 0.8rem;
+  width:140px;
+  text-align: center;
+}
+.btn-save{
+  color:white;
+  background:#3DBF4A;
+  border:none;
+  border-radius:20px;
+  padding:10px 20px;
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 0.8rem;
+  width:140px;
+  text-align: center;
+  margin-left: 10px;
 }
 
 .btn-green{

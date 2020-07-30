@@ -9,10 +9,6 @@
     padding: 8px;
 }
 
-.orders-table tr:hover {
-    background-color: #ddd;
-}
-
 .orders-table th {
     padding-right: 5px;
     padding-top: 12px;
