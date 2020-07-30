@@ -135,16 +135,19 @@ code {
 .text-coral {
   color: #EF536F;
   font-weight: bold;
+  text-align: center;
 }
 
 .text-gray {
   color: #3F3D56;
   font-weight: bold;
+  text-align: center;
 }
 
 .text-navy {
   color: #575A89;
   font-weight: bold;
+  text-align: center;
 }
 
 .no-margin {
