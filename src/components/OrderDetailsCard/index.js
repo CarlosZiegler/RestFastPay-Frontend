@@ -11,7 +11,7 @@ export default function index({ order, handleChange, isChecked }) {
         <div className="order-details-card">
             <div className="order-status">
                 <Toggle
-                    checked={isChecked}
+                    checked={status === 'paid' ? true : false}
                     size="default"
                     disabled={false}
                     onChange={handleChange}
@@ -35,7 +35,7 @@ export default function index({ order, handleChange, isChecked }) {
                 <div className="order-column-right">
                     <p className="order-description">Table NR:</p>
                     <span className="order-table-number">{tableId?.number}</span>
-                    <Link className={!isChecked ? `btn-add` : 'btn-add disabled'} to={`/order/edit/${_id}`}>ADD ITEM</Link>
+                    <Link className="btn-add" disabled={isChecked} to={`/order/edit/${_id}`}>ADD ITEM</Link>
                 </div>
             </div>
         </div>

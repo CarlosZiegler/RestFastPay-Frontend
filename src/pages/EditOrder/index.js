@@ -55,6 +55,7 @@ export default function OrderDetails(props) {
     }, [allItems])
 
     const getItemsFromOrder = async () => {
+
         try {
             const { data } = await api.get(`/order/${orderId}`, config);
             if (data?.hasOwnProperty('error')) {
@@ -73,7 +74,6 @@ export default function OrderDetails(props) {
     const getAllItemsFromAPI = async () => {
         try {
             const { data } = await api.get(`/items`, config);
-            console.log(data)
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
@@ -133,7 +133,7 @@ export default function OrderDetails(props) {
 
     useEffect(() => {
         updateStatus()
-    }, [checked])
+    }, [order])
 
     useEffect(() => {
         findOrders()
@@ -142,7 +142,8 @@ export default function OrderDetails(props) {
 
 
     const handleChange = e => {
-        setChecked(e.target.checked);
+        // setChecked(e.target.checked);
+        // console.log(e.target.checked)
     };
 
     const findOrders = () => {
@@ -161,9 +162,6 @@ export default function OrderDetails(props) {
     useEffect(() => {
         filterBy()
     }, [itemCategory])
-
-
-
 
     return (
         <>

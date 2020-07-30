@@ -27,7 +27,7 @@ export default function OrderDetails(props) {
     const [items, setItems] = useState([])
     const [orderId, setOrderId] = useState(props.match.params.id)
     const [order, setOrder] = useState(null)
-    const [checked, setChecked] = useState(false)
+
     const [error, setError] = useState(null)
 
 
@@ -53,10 +53,6 @@ export default function OrderDetails(props) {
             }
             setOrder(data)
             setItems(data.itemsId)
-            if (data.status === 'paid') {
-                setChecked(true)
-            }
-
         } catch (error) {
             console.log(error)
         }
@@ -65,7 +61,6 @@ export default function OrderDetails(props) {
     const deleteItem = async (itemId) => {
         try {
             const itemIndex = items.findIndex(item => item._id === itemId)
-
             const updateOrderItems = items.filter((item, index) => index !== itemIndex)?.map(({ _id }) => _id)
             const data = { itemsId: updateOrderItems }
             const result = await api.put(`/order/update/${orderId}`, data, config);
@@ -77,13 +72,8 @@ export default function OrderDetails(props) {
     }
     const updateStatus = async (itemId) => {
         try {
-            let data
-            if (checked) {
-                data = { status: 'paid' }
-            } else {
-                data = { status: 'pending' }
-            }
-            const result = await api.put(`/order/update/${orderId}`, data, config);
+
+            const result = await api.put(`/order/update/${orderId}`, order, config);
             getItemsFromOrder()
 
         } catch (error) {
@@ -97,12 +87,15 @@ export default function OrderDetails(props) {
 
     useEffect(() => {
         updateStatus()
-    }, [checked])
+    }, [order])
 
 
 
     const handleChange = e => {
-        setChecked(e.target.checked);
+        if (order.status === 'pending') {
+            return setOrder({ ...order, status: 'paid' })
+        }
+        return setOrder({ ...order, status: 'pending' })
     };
 
 
@@ -120,7 +113,7 @@ export default function OrderDetails(props) {
                 <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
 
             </div>
-            {order && <OrderDetailsCard order={order} isChecked={checked} handleChange={handleChange} />}
+            {order && <OrderDetailsCard order={order} handleChange={handleChange} />}
             <div className="items-container">
                 {items && <Items items={items} fnHandlerDelete={deleteItem} btnText={'delete'} />}
             </div>

@@ -133,9 +133,9 @@ export default function Main() {
                 />
             </div>
             <div className="btn-container">
-                <a className="btn-item" href="/order/create">Create Order</a>
-                <a className="btn-item" href="/item/create">Create Item</a>
-                <a className="btn-item" href="/table/create">Create Table</a>
+                <Link className="btn-item" to="/create/order">Create Order</Link>
+                <Link className="btn-item" to="/item/create">Create Item</Link>
+                <Link className="btn-item" to="/table/create">Create Table</Link>
             </div>
             <div className="orders-container">
                 <div className="search-container">

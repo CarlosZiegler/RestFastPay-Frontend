@@ -13,7 +13,7 @@ export default function index({ order }) {
             <td className="table-info order-status"><span className={status === 'paid' ? `status-paid` : 'status-pending'}>{status}</span></td>
             <td className='table-info order-total'>€{total.toFixed(2)}</td>
             <td className='table-info'>
-                <Link className="btn-orange" to={`/order/${_id}`}>Details</Link>
+                <a className="btn-orange" href={`/order/${_id}`}>Details</a>
             </td>
         </tr>
     )

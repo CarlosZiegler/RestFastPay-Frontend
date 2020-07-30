@@ -1,6 +1,5 @@
 import React from 'react'
 import Item from '../Item'
-import api from "../../services/api";
 import './style.css'
 
 export default function index({ items, fnHandlerDelete, btnText }) {

@@ -11,7 +11,6 @@ export default function Toggle(props) {
         offstyle = "btn-danger",
         onstyle = "btn-success"
     } = props;
-
     let displayStyle = checked ? onstyle : offstyle;
     return (
         <>
