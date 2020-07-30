@@ -133,7 +133,7 @@ export default function Main() {
                 />
             </div>
             <div className="btn-container">
-                <a className="btn-item" href="/order/create">Create Order</a>
+                <a className="btn-item" href="/create/order">Create Order</a>
                 <a className="btn-item" href="/item/create">Create Item</a>
                 <a className="btn-item" href="/table/create">Create Table</a>
             </div>
