@@ -30,7 +30,7 @@ export default function index({ order }) {
 
             </div>
             <div className="payment-action">
-                <a className="btn-green btn-create-item" >Payment</a>
+                <Link className="btn-green btn-create-item" to={`/checkout/payment/${_id}`} >Payment</Link>
             </div>
         </div>
     )
