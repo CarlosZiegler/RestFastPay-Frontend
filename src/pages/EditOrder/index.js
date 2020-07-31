@@ -107,7 +107,6 @@ export default function EditOrder(props) {
     const getAllItemsFromAPI = async () => {
         try {
             const { data } = await api.get(`/items`, config);
-            console.log(data)
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }

@@ -16,6 +16,13 @@ export default function CreateItem() {
     const [error, setError] = useState(null)
     const [items, setItems] = useState([])
 
+
+    useEffect(() => {
+        if (!token) {
+            history.push('/login')
+        }
+    }, [token])
+
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
@@ -58,7 +65,6 @@ export default function CreateItem() {
             const { data } = await api.post("/item/create", {
                 name, price, category: category
             }, config);
-            console.log(data)
             if (data?.hasOwnProperty('error')) {
                 return setError(data.error)
             }
@@ -70,9 +76,6 @@ export default function CreateItem() {
         }
     }
 
-    useEffect(() => {
-        console.log(category)
-    }, [category])
 
 
     return (<>

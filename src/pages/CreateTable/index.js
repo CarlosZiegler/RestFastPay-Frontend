@@ -15,6 +15,11 @@ export default function CreateTable() {
     const [error, setError] = useState('')
     const [tables, setTables] = useState([])
 
+    useEffect(() => {
+        if (!token) {
+            history.push('/login')
+        }
+    }, [token])
 
     const handleCreateTable = async () => {
         try {
