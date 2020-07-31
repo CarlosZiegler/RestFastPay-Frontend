@@ -18,7 +18,7 @@ function index(props) {
                 var height = pdf.internal.pageSize.getHeight();
 
                 pdf.addImage(imgData, 'JPEG', 0, 0, 350, 370);
-                pdf.save("test.pdf");
+                pdf.save("recipient.pdf");
             });
     };
 
