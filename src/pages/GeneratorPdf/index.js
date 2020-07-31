@@ -16,12 +16,12 @@ function index(props) {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF('p', 'pt');
 
-                pdf.addImage(imgData, 'JPEG', 1, 1);
+                pdf.addImage(imgData, 'JPEG', 50, 50, 450, 500);
 
-                var blobPDF = new Blob([pdf.output('blob')], { type: 'application/pdf' });
-                var blobUrl = URL.createObjectURL(blobPDF);  //<--- THE ERROR APPEARS HERE
+                // var blobPDF = new Blob([pdf.output('blob')], { type: 'application/pdf' });
+                // var blobUrl = URL.createObjectURL(blobPDF);  //<--- THE ERROR APPEARS HERE
 
-                window.open(blobUrl);
+                // window.open(blobUrl);
                 pdf.save("recipient.pdf");
             });
     };
