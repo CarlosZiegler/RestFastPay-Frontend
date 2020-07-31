@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Lottie from 'react-lottie'
 import OrderDetailsCheckout from '../../components/OrderDetailsCheckout'
 import Items from '../../components/Items'
+import GeneratorPdf from '../GeneratorPdf'
 import api from "../../services/api";
 
 import Logo from '../../assets/Logo.svg'
@@ -19,6 +20,8 @@ const defaultOptionsAnimation = {
     animationData: listDataAnimation,
 
 };
+
+
 
 
 export default function CheckoutOrder(props) {
@@ -74,6 +77,7 @@ export default function CheckoutOrder(props) {
                     isClickToPauseDisabled={true}
                 />
             </div>
+            {order && <GeneratorPdf order={order} />}
             {order && <OrderDetailsCheckout order={order} />}
 
             <div className="items-container">

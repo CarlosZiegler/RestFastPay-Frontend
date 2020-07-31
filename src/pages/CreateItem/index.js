@@ -85,6 +85,7 @@ export default function CreateItem() {
                 <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
 
             </div>
+            <h1 className="title-create-item">Create Item</h1>
             <form className="create-item-form">
                 <label className="item-create-label" htmlFor="category">
                     Name:

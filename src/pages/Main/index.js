@@ -110,37 +110,45 @@ export default function Main() {
             <Navbar />
             <Lottie className="lottieFile" options={defaultOptionsAnimation}
                 height={"auto"}
-                width={"150px"}
+                width={"200px"}
                 isClickToPauseDisabled={true}
             />
 
             <div className="img-container">
 
-                <Lottie className="lottieFile" options={defaultOptionsAnimationOrder}
-                    height={"auto"}
-                    width={"200px"}
-                    isClickToPauseDisabled={true}
-                />
-                <Lottie className="lottieFile" options={defaultOptionsAnimationItem}
-                    height={"auto"}
-                    width={"100px"}
-                    isClickToPauseDisabled={true}
-                />
-                <Lottie className="lottieFile" options={defaultOptionsAnimationTable}
-                    height={"auto"}
-                    width={"200px"}
-                    isClickToPauseDisabled={true}
-                />
-            </div>
-            <div className="btn-container">
-                <a className="btn-item" href="/create/order">Create Order</a>
-                <a className="btn-item" href="/item/create">Create Item</a>
-                <a className="btn-item" href="/table/create">Create Table</a>
+                <Link className="img-lottie" to="/create/order">
+                    <Lottie className="lottieFile" options={defaultOptionsAnimationOrder}
+                        height={"auto"}
+                        width={"100px"}
+                        isClickToPauseDisabled={true}
+                    />
+
+                        Create Order
+                </Link>
+                <Link className="img-lottie" to="/item/create">
+                    <Lottie options={defaultOptionsAnimationItem}
+                        height={"auto"}
+                        width={"100px"}
+                        isClickToPauseDisabled={true}
+                        resizeMode="cover"
+                    />
+                Create Item
+                </Link>
+
+
+                <Link className="img-lottie" to="/table/create">
+                    <Lottie className="lottieFile" options={defaultOptionsAnimationTable}
+                        height={"auto"}
+                        width={"100px"}
+                        isClickToPauseDisabled={true}
+                    />
+                Create Table</Link>
             </div>
             <div className="orders-container">
+                <h1 className="header-table">Orders</h1>
                 <div className="search-container">
-                    <FilterBy title={'Status'} options={['paid', 'pending', 'all']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
                     <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                    <FilterBy title={'Status'} options={['paid', 'pending', 'all']} handlerOnchange={(e) => setOrderStatus(e.target.value)} />
                 </div>
                 {orders && <Orders orders={showOrders} />}
             </div>

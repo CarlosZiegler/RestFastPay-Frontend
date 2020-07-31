@@ -37,7 +37,7 @@ export default function Signup() {
             <br />
             <form className="signup-form">
                 <input type="text" className="" placeholder="Display Name" required onChange={(e) => setName(e.target.value)} />
-                <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value.toLowerCase())} />
                 <input type="password" className="" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
                 <button className="btn-coral" type="button" onClick={() => handleSignup()}>Sign Up</button>
             </form>

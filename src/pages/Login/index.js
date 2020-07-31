@@ -37,7 +37,7 @@ export default function Login() {
             <p className="no-margin text-gray">Welcome back!</p>
             <br />
             <form className="login-form">
-                <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" className="" placeholder="Email" required onChange={(e) => setEmail(e.target.value.toLowerCase())} />
                 <input type="password" className="" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
                 <button className="btn-green" type="button" onClick={() => handleLogin()}>LOGIN</button>
                 {error && <span>{error?.message}</span>}

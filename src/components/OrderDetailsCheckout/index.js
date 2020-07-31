@@ -8,7 +8,7 @@ export default function index({ order }) {
     const lastTenDigitsOfId = _id.slice(-10)
     return (
 
-        <div className="order-details-card card-checkout">
+        <div className="order-details-card card-checkout" id="card-checkout-pdf">
             <div className="order-table-big">
                 <p className="order-description table-nr">Table NR:</p>
                 <span className="order-table-number">{tableId?.number}</span>

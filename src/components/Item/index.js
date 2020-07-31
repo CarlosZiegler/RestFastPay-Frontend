@@ -14,7 +14,7 @@ export default function index({ item, fnHandlerDelete, btnText }) {
             <td className='table-info item-name'>{name}</td>
             <td className='table-info item-total'>€{price.toFixed(2)}</td>
             <td className='table-info'>
-                {fnHandlerDelete && <button className={btnText === 'delete' ? `btn-red` : `btn-green`} onClick={() => fnHandlerDelete(_id)}>{btnText}</button>}
+                {fnHandlerDelete && <button className={btnText === 'delete' ? `btn-red-item` : `btn-green`} onClick={() => fnHandlerDelete(_id)}>{btnText}</button>}
             </td>
         </tr>
     )

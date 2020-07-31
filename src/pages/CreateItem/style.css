@@ -57,3 +57,8 @@
 .input-name-item::placeholder{
    padding:10px;
 }
+.title-create-item{
+    text-align: center;
+    color: #575A88;
+    margin: 2px;
+}
