@@ -41,3 +41,28 @@ margin-bottom: 20px;
     margin-top: 15px;
     text-align: center;
 }
+.payment-page-container{
+    background:  rgba(168, 249, 154, 0.32);
+    height: 100vh;
+}
+.payment-success-info{
+    color: rgba(33, 31, 106, 0.9);
+    font-weight: bold;
+    margin:5px;
+    text-align: center;
+}
+.payment-success-title{
+    color: rgba(24, 146, 36, 0.9);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+
+}
+.payment-sucess-details{
+    margin:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

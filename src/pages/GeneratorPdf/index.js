@@ -3,6 +3,7 @@
 import React from 'react';
 import jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
+import './style.css'
 
 
 
@@ -17,16 +18,15 @@ function index(props) {
                 var width = pdf.internal.pageSize.getWidth();
                 var height = pdf.internal.pageSize.getHeight();
 
-                pdf.addImage(imgData, 'JPEG', 0, 0, 350, 370);
+                pdf.addImage(imgData, 'JPEG', 200, 50, 250, 500);
                 pdf.save("recipient.pdf");
             });
     };
 
     return (
 
-        <div>
-
-            <button onClick={() => handlePdf()} type="primary">Download PNG</button>
+        <div className="btn-get-recipient">
+            <button className="btn-green-recipient" onClick={() => handlePdf()} type="primary">GET RECEIPT</button>
         </div>
 
     )
