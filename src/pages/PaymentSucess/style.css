@@ -43,7 +43,7 @@ margin-bottom: 20px;
 }
 .payment-page-container{
     background:  rgba(168, 249, 154, 0.32);
-    height: 100vh;
+    min-height: 100vh;
 }
 .payment-success-info{
     color: rgba(33, 31, 106, 0.9);

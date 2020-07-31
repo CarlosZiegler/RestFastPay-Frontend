@@ -19,6 +19,13 @@ function index(props) {
                 var height = pdf.internal.pageSize.getHeight();
 
                 pdf.addImage(imgData, 'JPEG', 200, 50, 250, 500);
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    const blob = pdf.output();
+                    window.open(URL.createObjectURL(blob));
+                }
+                else {
+                    pdf.save('filename.pdf');
+                }
                 pdf.save("recipient.pdf");
             });
     };
