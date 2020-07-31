@@ -15,17 +15,13 @@ function index(props) {
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF('p', 'pt');
-                var width = pdf.internal.pageSize.getWidth();
-                var height = pdf.internal.pageSize.getHeight();
 
-                pdf.addImage(imgData, 'JPEG', 200, 50, 250, 500);
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    const blob = pdf.output();
-                    window.open(URL.createObjectURL(blob));
-                }
-                else {
-                    pdf.save('filename.pdf');
-                }
+                pdf.addImage(imgData, 'JPEG', 1, 1);
+
+                var blobPDF = new Blob([pdf.output('blob')], { type: 'application/pdf' });
+                var blobUrl = URL.createObjectURL(blobPDF);  //<--- THE ERROR APPEARS HERE
+
+                window.open(blobUrl);
                 pdf.save("recipient.pdf");
             });
     };
