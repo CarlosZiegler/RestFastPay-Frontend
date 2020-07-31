@@ -1,6 +1,6 @@
 .orders-table{
-    width: 90%;
-    padding:5px;
+    width: 100%;
+    padding:10px;
     margin: 0px auto;
     border-collapse: separate;
 }
@@ -23,8 +23,6 @@
     font-weight: bold;
     width: 100%;
 }
-
-
 table { 
     border-collapse: separate; 
     border-spacing: 0px 10px;

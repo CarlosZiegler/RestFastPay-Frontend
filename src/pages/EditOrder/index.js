@@ -211,9 +211,10 @@ export default function EditOrder(props) {
             <div className="items-container">
                 <div className="searchbar-items">
                     <h3>ADD TO ORDER</h3>
-                    <FilterBy title={'Category'} options={['food', 'drink', 'all']} handlerOnchange={(e) => setItemCategory(e.target.value)} />
-                    <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
-
+                    <div className="search-container">
+                        <FilterBy title={'All'} options={['food', 'drink']} handlerOnchange={(e) => setItemCategory(e.target.value)} />
+                        <SearchBar handlerOnChange={(e) => setFindField(e.target.value)} />
+                    </div>
                 </div>
                 {showItems && <Items items={showItems} btnText={'add'} fnHandlerDelete={addItem} />}
             </div>

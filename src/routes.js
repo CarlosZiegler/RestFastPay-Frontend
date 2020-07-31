@@ -13,6 +13,11 @@ import CreateTable from "./pages/CreateTable";
 import CreateItem from "./pages/CreateItem";
 import Checkout from "./pages/CheckoutOrder";
 import QRCode from "./pages/GenerateQrcode";
+import GeneratorPdf from "./pages/GeneratorPdf";
+import SuccessPayment from "./pages/Success";
+import PaymentMethod from "./pages/PaymentMethod";
+import PaymentSuccess from "./pages/PaymentSucess";
+
 
 import './index.css'
 
@@ -31,6 +36,9 @@ export default function Routes() {
             <Route path="/table/create" exact component={CreateTable} />
             <Route path="/checkout/order/:id" exact component={Checkout} />
             <Route path="/checkout/generate/:id" exact component={QRCode} />
+            <Route path="/checkout/payment/:id" exact component={PaymentMethod} />
+            <Route path="/checkout/paid/success/:id" exact component={PaymentSuccess} />
+            <Route path="/checkout/payment2/:id" exact component={SuccessPayment} />
         </BrowserRouter>
     );
 }
