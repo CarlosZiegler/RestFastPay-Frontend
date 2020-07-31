@@ -17,6 +17,11 @@ export default function PaymentMethod(props) {
     const [orderId, setOrderId] = useState(props.match.params.id)
     const [order, setOrder] = useState(null)
     const [error, setError] = useState(null)
+
+    useEffect(() => {
+        getItemsFromOrder()
+    }, [])
+
     const getItemsFromOrder = async () => {
         try {
             const { data } = await api.get(`payment/order/${orderId}`);
@@ -24,6 +29,9 @@ export default function PaymentMethod(props) {
                 return setError(data.error)
             }
             setOrder(data)
+            if (data.status === 'paid') {
+                history.push('/')
+            }
 
 
         } catch (error) {
@@ -68,7 +76,6 @@ export default function PaymentMethod(props) {
                         <label for="paypal"><img className="card-img" src={PayPal} alt="paypal" /></label>
                     Use PayPal
                 </div>
-                    {/* </fieldset>   */}
                     <div className='terms-of-service'>
                         <input type="checkbox" name="consent" value="agree" />
                         <label for="consent">I agree to <a href="/terms-of-service">terms of service</a></label>
