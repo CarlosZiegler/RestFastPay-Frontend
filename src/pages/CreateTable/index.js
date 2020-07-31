@@ -77,7 +77,7 @@ export default function CreateTable() {
             <div className="back-button">
                 <Link className="btn-back" to={`/main`}> ← Orders Overview</Link>
             </div>
-            <h1 className="no-margin">Create Table</h1>
+            <h1 className="no-margin title-create-table">Create Table</h1>
             <form className="create-table-form">
                 <input type="number" className="" value={number} placeholder="Number" required onChange={(e) => setNumber(e.target.value)} />
                 <button className="btn-add" type="button" onClick={() => handleCreateTable()}>Create</button>

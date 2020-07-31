@@ -1,0 +1,42 @@
+
+.order-item{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background: rgb(164, 164, 164);
+    padding: 10px;
+    
+}
+.btn-container{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.btn-item{
+    margin:0 5px;
+    color: #2F2E41;
+    font-weight: bold;
+    padding:5px 10px;
+    background:#FFD43C;
+    border-radius: 15px;
+    justify-content:center;
+    align-items:center;
+    width:90px;
+}
+.items-container{
+    background:rgba(255, 185, 185, 0.24);
+    border-radius: 20px 20px 0 0 ;
+    margin-top: 20px;
+}
+
+.back-button{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin: 20px auto;
+}
+.payment-action{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
