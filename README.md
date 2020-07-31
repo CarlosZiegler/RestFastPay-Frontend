@@ -1,11 +1,8 @@
 
 <div align="center">
   <p>
-    <strong>My Internship</strong>
+    <strong>Restaurant Fast Pay</strong>
   </p>
-
-
-![Node.js CI](https://github.com/CarlosZiegler/myinternship/workflows/Node.js%20CI/badge.svg)
 
 ## Start
 
