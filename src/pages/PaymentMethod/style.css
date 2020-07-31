@@ -1,0 +1,42 @@
+.payment-options {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(216, 232, 248, 0.32);
+    padding:10px;
+    border-radius: 20px;
+}
+
+.payment-img {
+width: 150px;
+margin-bottom: 20px;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+}
+
+.card-img {
+    width: 80px;
+    margin: 5px;
+}
+
+.terms-of-service {
+    margin-top: 10px;
+    text-align: center;
+}
+.terms-of-service a {
+    text-decoration: underline;
+}
+
+.btn-pay {
+    width: 70%;
+    max-width: 300px;
+    height: 35px;
+    margin-top: 15px;
+}
