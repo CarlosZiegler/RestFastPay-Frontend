@@ -1,11 +1,7 @@
 
-
-<div align="center">
-   
-  <p>    Restaurant Fast Pay  </p>
-  
+# Restaurant Fast Pay
+<div align="center"> 
   <img src="https://user-images.githubusercontent.com/38855507/92724487-f7efeb00-f36a-11ea-8e6d-5714862975f1.png"/>
- 
 
 ## About
 The recent Coronavirus pandemic has not only scared the hell out of everyone, but also boosted the development of all things contactless.
