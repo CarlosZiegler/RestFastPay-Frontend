@@ -2,11 +2,16 @@
 <div align="center">
   <p>
     <strong>Restaurant Fast Pay</strong>
+    <img src="https://user-images.githubusercontent.com/38855507/92724487-f7efeb00-f36a-11ea-8e6d-5714862975f1.png"
   </p>
 
-## Start
+## About
+The recent Coronavirus pandemic has not only scared the hell out of everyone, but also boosted the development of all things contactless.
 
-## Endpoints
+Since money and credit card terminals are extremely exposed to contamination and hard to disinfect, the next thing contactless will probably be  a payment app.
+
+Additional benefit for restaurants and bars is the automated checkout.
+For customers - the ability to get their receipt as a .pdf file.
 
 ## Autors
 
